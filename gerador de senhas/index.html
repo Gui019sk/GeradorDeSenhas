@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerador de Senhas</title>
+</head>
+<body>
+    <div class="container">
+        <div class="texto">Gerador de Senhas</div>
+        <div id="passwords-container">
+            <button onclick="gerarSenhas()" id="gerarSenhasButton">Gerar Senhas</button>
+            <div id="senhas"></div>
+        </div>
+        <div class="creditos">By Gui019sk</div>
+    </div>
+
+<script>
+    function gerarSenha() {
+        // Gera uma senha aleatória de 8 caracteres
+        let caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+';
+        let senha = '';
+        for (let i = 0; i < 8; i++) {
+            senha += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+        }
+        return senha;
+    }
+
+    function gerarSenhas() {
+        let container = document.getElementById('senhas');
+        container.innerHTML = ''; 
+
+        // Gera 20 senhas
+        for (let i = 0; i < 20; i++) {
+            let senha = gerarSenha();
+            let senhaElement = document.createElement('div');
+            senhaElement.textContent = senha;
+            container.appendChild(senhaElement);
+        }
+
+        document.querySelector('.texto').textContent = '';
+    }
+</script>
+
+</body>
+</html>
